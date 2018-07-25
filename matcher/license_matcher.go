@@ -22,8 +22,6 @@ import (
 	_ "gopkg.in/src-d/go-git.v4/storage/memory"
 	"gopkg.in/src-d/go-license-detector.v2/licensedb"
 	"gopkg.in/src-d/go-license-detector.v2/licensedb/filer"
-	"jfrog.com/xray/common"
-	"jfrog.com/xray/utils/collections/sets"
 	"time"
 )
 
@@ -36,7 +34,7 @@ var extractedLicenseCache *lru.Cache = lru.New(1000, lru.WithExpiry(168*time.Hou
 
 // read licenses db and instantiate the classifier
 func InitLicenseMatcher(licensesFolder string) error {
-	licenseclassifier.LicensesDir(licensesFolder + common.Licenses)
+	licenseclassifier.LicensesDir(licensesFolder + utils.Licenses)
 	var err error
 	lc, err = licenseclassifier.New(0.8)
 	if err != nil {
@@ -53,7 +51,7 @@ func MatchLicenseTxt(licenseTxt string) []string {
 		return val.([]string)
 	} else {
 		n := lc.MultipleMatch(licenseTxt, true)
-		set := sets.NewSet()
+		set := utils.NewSet()
 		if len(n) > 0 {
 			for _, m := range n {
 				if m.Confidence > 0.8 {
@@ -71,7 +69,7 @@ func MatchLicenseTxt(licenseTxt string) []string {
 			return licenses
 		}
 	}
-	return []string{common.LICENSE_UNKNOWN}
+	return []string{utils.LICENSE_UNKNOWN}
 }
 
 type DiscoveryFiler struct {
@@ -89,7 +87,7 @@ func (df DiscoveryFiler) Close() {
 }
 
 func GetLicenseFromDetector(licenseTxt string, licSha string) []string {
-	set := sets.NewSet()
+	set := utils.NewSet()
 	if len(licSha) == 0 {
 		licSha = utils.LicenseToSha256(licenseTxt)
 	}
@@ -123,10 +121,10 @@ func GetLicenseFromDetector(licenseTxt string, licSha string) []string {
 func GetPomCommentLicense(pomTxt string) string {
 	pomComments := utils.ReadPomComments(pomTxt)
 	tLicense := strings.TrimSpace(pomComments)
-	lic := GetLicenseFromDetector(tLicense, common.EMPTY_STRING)
+	lic := GetLicenseFromDetector(tLicense, utils.EMPTY_STRING)
 	if len(lic) > 0 {
 		return lic[0]
 	}
 
-	return common.LICENSE_UNKNOWN
+	return utils.LICENSE_UNKNOWN
 }
