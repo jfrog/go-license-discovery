@@ -1,0 +1,5 @@
+.vagrant/
+rpms
+*.sqlite
+*.bz2
+*.gz

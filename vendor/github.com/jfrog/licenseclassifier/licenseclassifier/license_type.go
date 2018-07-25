@@ -18,7 +18,7 @@ package licenseclassifier
 //   1. Add the canonical name to the list, and
 //   2. Categorize the license.
 
-import "github.com/JFrogDev/licenseclassifier/licenseclassifier/internal/sets"
+import "github.com/jfrog/licenseclassifier/licenseclassifier/internal/sets"
 
 // Canonical names of the licenses.
 const (
