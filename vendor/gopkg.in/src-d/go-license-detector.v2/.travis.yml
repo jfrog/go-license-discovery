@@ -1,0 +1,65 @@
+dist: trusty
+
+language: go
+
+go_import_path: gopkg.in/src-d/go-license-detector.v2
+go:
+  - 1.9.x
+  - 1.10.x
+  - tip
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - go: tip
+
+before_install:
+  - go get -v github.com/golang/lint/golint
+  - go get -v github.com/haya14busa/goverage
+
+install:
+  - go get -v -t ./...
+
+script:
+  - go vet ./...
+  - lint_warns=$(golint ./... | grep -v vendor/) || true
+  - if [ ! -z "$lint_warns" ]; then echo "$lint_warns"; exit 1; fi
+  - goverage -cpu=1,2 -coverprofile=coverage.txt -covermode=count gopkg.in/src-d/go-license-detector.v2/...
+  - sed -i '/assets/d' coverage.txt
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+jobs:
+  include:
+    - stage: deploy
+      os: osx
+      go: 1.10.x
+      after_success:
+        - gzip -S .darwin_amd64.gz $GOPATH/bin/license-detector
+      script: skip
+      deploy:
+        provider: releases
+        api_key:
+          secure: $GITHUB_TOKEN
+        file: "$GOPATH/bin/license-detector.darwin_amd64.gz"
+        skip_cleanup: true
+        on:
+          tags: true
+    - stage: deploy
+      os: linux
+      go: 1.10.x
+      script: skip
+      after_success:
+        - gzip -S .linux_amd64.gz $GOPATH/bin/license-detector
+      deploy:
+        provider: releases
+        api_key:
+          secure: $GITHUB_TOKEN
+        file: "$GOPATH/bin/license-detector.linux_amd64.gz"
+        skip_cleanup: true
+        on:
+          tags: true
+
+notifications:
+  email: false
