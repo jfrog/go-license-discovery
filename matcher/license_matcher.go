@@ -2,9 +2,9 @@ package matcher
 
 import (
 	_ "github.com/ekzhu/minhash-lsh"
-	"github.com/go-license-discovery/utils"
 	_ "github.com/hhatto/gorst"
 	_ "github.com/jdkato/prose/chunk"
+	"github.com/jfrog/go-license-discovery/utils"
 	"github.com/jfrog/gofrog/lru"
 	"github.com/jfrog/licenseclassifier/licenseclassifier"
 	_ "github.com/pkg/errors"
