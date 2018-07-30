@@ -14,5 +14,11 @@ In Addition this library uses :
  - analyzed pom file to detect licenses which presented in the pom as a comment
 
 Example :
-
-copy licenses
+- Copy licenses.db file: 
+```copy licenses.db (located under matcher/licenses/licenses.db) file to <licenses folder>```
+- Init license matcher: 
+```matcher.InitLicenseMatcher(<licenses folder>)```
+- Match licenses txt file 
+```matcher.MatchLicenseTxt(license)```
+- Read License from pom file comments
+```matcher.GetPomCommentLicense(pom)```
