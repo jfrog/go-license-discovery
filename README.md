@@ -24,9 +24,9 @@ matcher.InitLicenseMatcher(<licenses folder>)
 ```
 - Match licenses txt file to a known spdx licenses
 ```
-matcher.MatchLicenseTxt(license)
+matcher.MatchLicenseTxt(licenseTxt)
 ```
 - Read License from pom file comments and match it to a known spdx licenses
 ```
-matcher.GetPomCommentLicense(pom)
+matcher.GetPomCommentLicense(pomFile)
 ```
