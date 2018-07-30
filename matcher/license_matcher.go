@@ -120,6 +120,9 @@ func GetLicenseFromDetector(licenseTxt string, licSha string) []string {
 // read licenses which presented as a comment in the pom file
 func GetPomCommentLicense(pomTxt string) string {
 	pomComments := utils.ReadPomComments(pomTxt)
+	if len(pomComments) == 0 {
+		return utils.LICENSE_UNKNOWN
+	}
 	tLicense := strings.TrimSpace(pomComments)
 	lic := GetLicenseFromDetector(tLicense, utils.EMPTY_STRING)
 	if len(lic) > 0 {
