@@ -41,6 +41,7 @@ func TestMatchLicenseTxtWithClassifier(t *testing.T){
 		t.Fatal(err)
 	}
 	f,err:=os.Open("./fixtures/Multi_LICENSE.txt")
+	defer f.Close()
 	if err != nil{
 		t.Fatal(err)
 	}
@@ -58,6 +59,8 @@ func TestMatchLicenseTxtWithDetector(t *testing.T){
 		t.Fatal(err)
 	}
 	f,err:=os.Open("./fixtures/Partial_LICENSE.txt")
+	defer f.Close()
+
 	if err != nil{
 		t.Fatal(err)
 	}
@@ -75,6 +78,8 @@ func TestMatchLicenseTxtWithPom(t *testing.T){
 		t.Fatal(err)
 	}
 	f,err:=os.Open("./fixtures/PomWithLicenseAsComment.xml")
+	defer f.Close()
+
 	if err != nil{
 		t.Fatal(err)
 	}
