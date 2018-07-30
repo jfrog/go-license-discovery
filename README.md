@@ -12,3 +12,7 @@ This library encapsulate logic from 2 best licenses detection libraries :
 In Addition this library uses :
  - checksum based cache to have better performance detection of licenses which already been met
  - analyzed pom file to detect licenses which presented in the pom as a comment
+
+Example :
+
+copy licenses
