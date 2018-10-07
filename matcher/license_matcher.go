@@ -36,7 +36,7 @@ var extractedLicenseCache *lru.Cache = lru.New(1000, lru.WithExpiry(168*time.Hou
 func InitLicenseMatcher(licensesFolder string) error {
 	licenseclassifier.LicensesDir(licensesFolder + utils.Licenses)
 	var err error
-	lc, err = licenseclassifier.New(0.8)
+	lc, err = licenseclassifier.New(0.85)
 	if err != nil {
 		return err
 	}
@@ -54,7 +54,7 @@ func MatchLicenseTxt(licenseTxt string) []string {
 		set := utils.NewSet()
 		if len(n) > 0 {
 			for _, m := range n {
-				if m.Confidence > 0.8 {
+				if m.Confidence > 0.85 {
 					set.AddString(m.Name)
 				}
 			}
