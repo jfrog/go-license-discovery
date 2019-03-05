@@ -11,7 +11,6 @@ import (
 	_ "golang.org/x/exp/rand"
 	_ "gonum.org/v1/gonum/stat/distuv"
 	"gopkg.in/goyy/goyy.v0/util/strings"
-	_ "gopkg.in/russross/blackfriday.v2"
 	_ "gopkg.in/src-d/go-billy.v4/memfs"
 	_ "gopkg.in/src-d/go-billy.v4/osfs"
 	_ "gopkg.in/src-d/go-git.v4/plumbing"
