@@ -22,11 +22,11 @@ copy licenses.db (located under matcher/licenses/licenses.db) file to <licenses 
 ```
 matcher.InitLicenseMatcher(<licenses folder>)
 ```
-- Match licenses txt file to a known spdx licenses
+- Match licenses txt file to a known spdx licenses.
 ```
 matcher.MatchLicenseTxt(licenseTxt)
 ```
-- Read License from pom file comments and match it to a known spdx licenses
+- Read License from pom file comments and match it to a known spdx licenses.
 ```
 matcher.GetPomCommentLicense(pomFile)
 ```
