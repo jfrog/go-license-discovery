@@ -9,7 +9,7 @@ require (
 	github.com/hhatto/gorst v0.0.0-20181029133204-ca9f730cac5b
 	github.com/jdkato/prose v1.1.0
 	github.com/jfrog/gofrog v1.0.4
-	github.com/jfrog/licenseclassifier/licenseclassifier v1.1.0
+	github.com/jfrog/licenseclassifier/licenseclassifier v0.0.0-20190327163436-f37368549ae9
 	github.com/neurosnap/sentences v1.0.6 // indirect
 	github.com/pkg/errors v0.8.1
 	github.com/stretchr/testify v1.3.0
