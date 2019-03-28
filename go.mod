@@ -15,6 +15,6 @@ require (
 	gonum.org/v1/gonum v0.0.0-20190328025304-c92de052782e
 	gopkg.in/goyy/goyy.v0 v0.0.0-20190218140538-82e7740e526e
 	gopkg.in/src-d/go-billy.v4 v4.3.0
-	gopkg.in/src-d/go-git.v4 v4.10.0
+	gopkg.in/src-d/go-git.v4 v4.1.0
 	gopkg.in/src-d/go-license-detector.v2 v2.0.1
 )
