@@ -84,6 +84,9 @@ func (df DiscoveryFiler) ReadDir(path string) ([]filer.File, error) {
 func (df DiscoveryFiler) Close() {
 
 }
+func (df DiscoveryFiler) PathsAreAlwaysSlash() bool {
+	return true
+}
 
 func GetLicenseFromDetector(licenseTxt string, licSha string) []string {
 	set := utils.NewSet()
